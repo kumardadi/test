@@ -4,7 +4,7 @@
 int main()
 {
 
-  Date d;
+  Date d(1,1,12);
   cout<<"Enter a Date ";
   cin>>d;
   cout<<d<<endl;

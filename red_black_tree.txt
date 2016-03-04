@@ -1,0 +1,67 @@
+Report for Red Black Trees
+
+L Purnachandar (14CS30014)
+
+March 3, 2016
+
+Searching:
+
+1.Algorithm:
+
+The search in a red black tree is similar to that of an AVL tree .Comparethe root with the key if the key is equal return the pointer to the root or if itis greater, then search in the right subtree else in the left subtree.  The AVLtrees are more balanced compared to Red Black Trees, but they may causemore rotations during insertion and deletion. So if your application involvesmany frequent insertions and deletions, then Red Black trees should be pre-ferred.  And if the insertions and deletions are less frequent and search ismore frequent operation, then AVL tree should be preferred over Red BlackTree
+
+2.Running Time:
+
+This operation eliminates at least a subtree at every node.In worst case sce-nario is to go through the whole height of the red-black tree and the height isof the order of log(n).Hence the Running time of the function is O(log(n)).Theheight of a Red Black tree is always O(Log(n)) where n is the number ofnodes in the tree.
+
+Insertion:
+
+1.Algorithm:
+
+In the case of red black trees the Algorithm is similar to that of an AVL treetill the point of insertion However the balancing turns out to take less timein this case.During insertion there might be violation of colour rule.The violations at any black node can be classified into 3 cases..
+
+case 1:If both the children are red and one of their children is red.The solution is to make the childs black and the root root and send the vio-lation up the tree.
+
+case 2:If one child is black and the other is red and the closest child of this is also red.The way to solve this is to convert it into case three either by a right or leftrotation.
+
+case 3:If one child is black and the other is red and the farthest child of this is also red.
+Make a single right or left rotation as required to bring down the colour vio-lation.
+
+2.Running time:
+
+The insertion might take place after h turns at worst where h is the height ofthe tree.Then only case 1 sends the violation up the tree.  So time taken tobalance is O(1).
+Hence The Total Running Time is O(h)i.e,O(log(n)).
+
+Deletion:
+
+1.Algorithm :
+
+In  delete  operation,  we  check  color  of  sibling  to  decide  the  appropriatecase.The main property that violates after insertion is two consecutive reds.In delete, the main violated property is, change of black height in subtrees asdeletion of a black node may cause reduced black height in one root to leafpath.Deletion is fairly complex process.  To understand deletion, notion ofdouble black is used. When a black node is deleted and replaced by a blackchild, the child is marked as double black.  The main task now becomes toconvert this double black to single black The Algorithm is similar to that ofan AVL tree till the point of deletion However the balancing turns out to takeless time in this case.During Deletion there might be violation of height rule.The violations at any black node can be classified into 4 cases..
+
+case 1:If one subtree is double black and it’s sibling is black and the blacknode’s right child is red.The solution is to make appropriate direction only once and colour appropri-ately .
+
+case 2:If one subtree is doubleblack and it’s sibling is black and black node’sleft child is red.The way to solve this is to make two rotations and colour appropriately.
+
+case 3:If one subtree is doubleblack and it’s sibling is black and none of it’schildren is red.Change the colour of siblings and the parent and send the violation up the tree if required.
+
+case 4:If one subtree is doubleblack and it’s sibling is red.Then rotate once appropriately thus sending the double black into 2 nd leveland Now this becomes case 3.
+
+2.Running Time :
+
+The Deletion might take place after h turns at worst where h is the heightof the tree.Then case 2 sends the violation up the tree and case 4 sends theviolation down only once . So time taken to balance is O(1).
+Hence The Total Running Time is O(h) i.e, O(log(n)).
+
+process creation:
+
+1.Algorithm :
+
+In this process we just create a new red black node if required and then re-turn it through the call of the function. Hence the time required is of constantorder.
+The Running Time is O(1).
+
+Process scheduler:
+
+1.Algorithm :
+
+This function inserts the node from process creator which can take a maxi-mum of log(n) time and the delete the left most node which also may takelog(n time at max).
+Then we insert it back if the process is not completed.Hence the total run-ning  time  is  the  sum  of  all  these  processes  along  with  a  few  assignmentstatements.
+Hence the Running Time is O(log(n)).

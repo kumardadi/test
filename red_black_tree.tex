@@ -1,0 +1,107 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+
+\title{Report for Red Black Trees}
+\author{L Purnachandar (14CS30014)}
+
+\begin{document}
+
+\maketitle
+
+\paragraph{Searching:}
+\begin{enumerate}
+ \item \textbf{Algorithm}
+
+The search in  a red black tree is similar to that of an AVL tree .Compare the root with the key if the key is equal return the pointer to the root or if it is  greater, then search in the right subtree else in the left subtree.
+The AVL trees are more balanced compared to Red Black Trees, but they may cause more rotations during insertion and deletion. So if your application involves many frequent insertions and deletions, then Red Black trees should be preferred. And if the insertions and deletions are less frequent and search is more frequent operation, then AVL tree should be preferred over Red Black Tree
+
+ \item \textbf{Running Time:}
+
+This operation eliminates at least a  subtree at every node.In worst case scenario is to go through the whole height of the red-black tree and the height is of the order of log(n).Hence the Running time of the function is O(log(n)).The height of a Red Black tree is always O(Log(n)) where n is the number of nodes in the tree.\\
+
+ 
+\end{enumerate}
+
+\paragraph{Insertion:}
+\begin{enumerate}
+ \item \textbf{Algorithm}
+ 
+ 
+ 
+In the case of red black trees the Algorithm is similar to that of an AVL tree till the point of insertion However the balancing turns out to take less time in this case.During insertion there might be violation of colour rule.\\
+The violations at any black node can be classified into 3 cases.\\ .
+
+
+\textbf{case 1:} If both the children are red and one of their children is red.\\
+The solution is to make the childs black and the root root and send the violation up the tree.\\
+\textbf{case 2:} If one child is black and the other is red and the closest child of this is also red.\\
+The way to solve this is to convert it into case three either by a right or left rotation.\\
+\textbf{case 3:} If one child is black and the other is red and the farthest child of this is also red.\\
+Make a single right or left rotation as required to bring down the colour violation.\\
+
+
+ \item \textbf{Running time:}
+ 
+ 
+ The insertion might take place after h turns at worst where h is the height of the tree.Then only case 1 sends the violation  up the tree. So time taken to balance is O(1).\\
+ Hence The Total Running Time is O(h)i.e,O(log(n)).\\
+
+\end{enumerate}
+\paragraph{Deletion:}
+\begin{enumerate}
+\item \textbf{Algorithm :}
+
+In delete operation, we check color of sibling to decide the appropriate case.The main property that violates after insertion is two consecutive reds. In delete, the main violated property is, change of black height in subtrees as deletion of a black node may cause reduced black height in one root to leaf path.Deletion is fairly complex process.  To understand deletion, notion of double black is used.  When a black node is deleted and replaced by a black child, the child is marked as double black. The main task now becomes to convert this double black to single black
+The Algorithm is similar to that of an AVL tree till the point of deletion  However the balancing turns out to take less time in this case.During Deletion there might be violation of height rule.\\
+The violations at any black node can be classified into 4 cases.\\
+
+.
+\textbf{case 1:}
+    If one subtree is double black and it's sibling is  black
+and the black node's right child is red.\\
+The solution is to make appropriate direction only once and colour appropriately .\\
+
+\textbf{case 2:} 
+    If one subtree is doubleblack and it's sibling is  black
+and black node's left child is red.\\
+The way to solve this is to make two rotations and colour appropriately.\\
+
+\textbf{case 3:}If one subtree is doubleblack and it's sibling is  black
+and none of it's children is red.\\
+Change the colour of siblings and the parent and send the violation up the tree if required.\\
+
+\textbf{case 4:}If one subtree is doubleblack and it's sibling is  red.\\
+Then rotate once appropriately thus sending the double black into 2 nd level and Now this becomes case 3.
+
+\item \textbf{Running Time :}
+
+ The Deletion might take place after h turns at worst where h is the height of the tree.Then  case 2 sends the violation  up the tree and case 4 sends the violation down only once . So time taken to balance is O(1).\\
+ Hence The Total Running Time is O(h) i.e, O(log(n)).\\
+ 
+ 
+\end{enumerate}
+\paragraph{process creation:}
+
+
+\begin{enumerate}
+\item \textbf{Algorithm :}
+
+
+In this process we just create a new red black node if required and then return it through the call of the function.
+Hence the time required is of constant order.\\
+The Running Time is O(1).\\
+\end{enumerate}
+\paragraph{Process scheduler:}
+
+
+\begin{enumerate}
+\item \textbf{Algorithm :}
+
+
+This function inserts the node from process creator which can take a maximum of  log(n) time and the delete the left most node which also may take log(n time at max).\\
+Then we insert it back if the process is not completed.Hence the total running time is the sum of all these processes along with a few assignment statements.\\
+Hence the Running Time is O(log(n)).\\
+
+\end{enumerate}
+\end{document}
